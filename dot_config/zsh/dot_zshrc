@@ -2,7 +2,10 @@
 SHELDON_CONFIG_DIR="$ZDOTDIR/sheldon"
 eval "$(sheldon source)"
 
-# alias
+# zsh-abbr
+export ABBR_SET_EXPANSION_CURSOR=1
+
+# basics
 alias rm='rm -I --preserve-root'
 alias mv='mv -i'
 alias cp='cp -i'
@@ -10,14 +13,24 @@ alias ln='ln -i'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
-alias ls='ls --color=auto'
-
-# abbr
-export ABBR_SET_EXPANSION_CURSOR=1
-abbr -S ncg='nix-collect-garbage -d' > /dev/null
 abbr -S ..='cd ..' > /dev/null
 abbr -S ...='cd ../../' > /dev/null
+abbr -S ncg='nix-collect-garbage -d' > /dev/null
 
+# ls
+alias ls='ls --color=auto'
+if command -v eza >/dev/null 2>&1; then
+  alias eza='eza --icons=auto --group-directories-first'
+  abbr -S l='eza -F' > /dev/null
+  abbr -S la='eza -aF' > /dev/null
+  abbr -S ll='eza -lahF' > /dev/null
+else
+  abbr -S l='ls -F' > /dev/null
+  abbr -S la='ls -aF' > /dev/null
+  abbr -S ll='ls -lahF' > /dev/null
+fi
+
+# docker
 abbr -S d='docker' > /dev/null
 abbr -S dc='docker compose' > /dev/null
 abbr -S dcu='docker compose up' > /dev/null
@@ -28,6 +41,7 @@ abbr -S dcl='docker compose logs' > /dev/null
 abbr -S dce='docker compose exec' > /dev/null
 abbr -S dcr='docker compose restart' > /dev/null
 
+# git
 abbr -S g='git' > /dev/null
 abbr -S ga='git add' > /dev/null
 abbr -S ga.='git add .' > /dev/null
@@ -39,17 +53,6 @@ abbr -S gf='git fetch' > /dev/null
 abbr -S gp='git pull' > /dev/null
 abbr -S gP='git push' > /dev/null
 abbr -S gsw='git switch' > /dev/null
-
-# ls
-if command -v eza >/dev/null 2>&1; then
-  abbr -S l='eza -F --group-directories-first' > /dev/null
-  abbr -S la='eza -aF --group-directories-first' > /dev/null
-  abbr -S ll='eza -lahF --icons=auto --git --group-directories-first' > /dev/null
-else
-  abbr -S l='ls -F' > /dev/null
-  abbr -S la='ls -aF' > /dev/null
-  abbr -S ll='ls -lahF' > /dev/null
-fi
 
 # history
 HISTFILE="$XDG_STATE_HOME/zsh_history"
