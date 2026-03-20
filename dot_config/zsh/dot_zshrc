@@ -21,9 +21,11 @@ abbr -S ncg='nix-collect-garbage -d' > /dev/null
 alias ls='ls --color=auto'
 if command -v eza >/dev/null 2>&1; then
   alias eza='eza --icons=auto --group-directories-first'
-  abbr -S l='eza -F' > /dev/null
-  abbr -S la='eza -aF' > /dev/null
-  abbr -S ll='eza -lahF' > /dev/null
+
+  # -F をつけるとパス補完ができなくなるのではずす
+  abbr -S l='eza' > /dev/null
+  abbr -S la='eza -a' > /dev/null
+  abbr -S ll='eza -lah' > /dev/null
 else
   abbr -S l='ls -F' > /dev/null
   abbr -S la='ls -aF' > /dev/null
