@@ -141,73 +141,6 @@ return {
 		},
 	},
 	{
-		"kevinhwang91/nvim-hlslens",
-		event = "VeryLazy",
-		config = true,
-		keys = function()
-			local function start()
-				require("hlslens").start()
-			end
-
-			return {
-				{
-					"n",
-					function()
-						vim.cmd(("normal! %dn"):format(vim.v.count1))
-						start()
-					end,
-					mode = "n",
-					desc = "Next search (hlslens)",
-				},
-				{
-					"N",
-					function()
-						vim.cmd(("normal! %dN"):format(vim.v.count1))
-						start()
-					end,
-					mode = "n",
-					desc = "Prev search (hlslens)",
-				},
-				{
-					"*",
-					function()
-						vim.cmd("normal! *")
-						start()
-					end,
-					mode = "n",
-					desc = "Search word forward (hlslens)",
-				},
-				{
-					"#",
-					function()
-						vim.cmd("normal! #")
-						start()
-					end,
-					mode = "n",
-					desc = "Search word backward (hlslens)",
-				},
-				{
-					"g*",
-					function()
-						vim.cmd("normal! g*")
-						start()
-					end,
-					mode = "n",
-					desc = "Search word (partial) forward (hlslens)",
-				},
-				{
-					"g#",
-					function()
-						vim.cmd("normal! g#")
-						start()
-					end,
-					mode = "n",
-					desc = "Search word (partial) backward (hlslens)",
-				},
-			}
-		end,
-	},
-	{
 		"https://github.com/nvim-mini/mini.hipatterns",
 		event = "VeryLazy",
 		opts = function()
@@ -225,5 +158,63 @@ return {
 				},
 			}
 		end,
+	},
+	{
+		"https://github.com/folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			presets = {
+				lsp_doc_border = true,
+				long_message_to_split = true,
+			},
+			views = {
+				notify = {
+					merge = true,
+				},
+			},
+			messages = {
+				enabled = true,
+				view = "mini",
+				view_search = "virtualtext",
+			},
+			notify = {
+				enabled = false,
+			},
+			lsp = {
+				hover = {
+					enabled = true,
+				},
+				signature = {
+					enabled = false,
+				},
+				message = {
+					enabled = true,
+					view = "mini",
+					opts = {},
+				},
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+				},
+			},
+		},
+		keys = {
+			{
+				"<c-j>",
+				function()
+					if not require("noice.lsp").scroll(4) then
+						return "<c-j>"
+					end
+				end,
+			},
+			{
+				"<c-k>",
+				function()
+					if not require("noice.lsp").scroll(-4) then
+						return "<c-k>"
+					end
+				end,
+			},
+		},
 	},
 }

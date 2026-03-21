@@ -11,4 +11,8 @@ return {
 		"https://github.com/vim-denops/denops.vim",
     lazy = true,
 	},
+	{
+		"https://github.com/MunifTanjim/nui.nvim",
+    lazy = true,
+	},
 }
