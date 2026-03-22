@@ -217,4 +217,21 @@ return {
 			},
 		},
 	},
+	{
+		"https://github.com/ruicsh/termite.nvim",
+    event = "VeryLazy",
+		opts = {
+			position = "bottom",
+			keymaps = {
+				toggle = "<C-\\>",
+				create = "<C-t>",
+				next = "<C-]>",
+				prev = "<C-[>",
+				normal_mode = false,
+				focus_editor = false,
+				maximize = "<C-z>",
+				close = "q",
+			},
+		},
+	},
 }
