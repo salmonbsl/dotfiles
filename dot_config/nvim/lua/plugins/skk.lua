@@ -6,15 +6,17 @@ return {
 		},
 		config = function()
 			local e = vim.fn.expand
+			local dicDir = e("~/.local/share/skk")
+
 			vim.fn["skkeleton#config"]({
 				globalDictionaries = {
-					e("~/dotfiles/resources/skk-dics/SKK-JISYO.L"),
-					e("~/dotfiles/resources/skk-dics/SKK-JISYO.geo"),
-					e("~/dotfiles/resources/skk-dics/SKK-JISYO.jinmei"),
-					e("~/dotfiles/resources/skk-dics/SKK-JISYO.okinawa"),
-					e("~/dotfiles/resources/skk-dics/SKK-JISYO.propernoun"),
-					e("~/dotfiles/resources/skk-dics/SKK-JISYO.station"),
-					e("~/dotfiles/resources/skk-dics/SKK-JISYO.law"),
+					e(dicDir .. "/SKK-JISYO.L"),
+					e(dicDir .. "/SKK-JISYO.geo"),
+					e(dicDir .. "/SKK-JISYO.jinmei"),
+					e(dicDir .. "/SKK-JISYO.okinawa"),
+					e(dicDir .. "/SKK-JISYO.propernoun"),
+					e(dicDir .. "/SKK-JISYO.station"),
+					e(dicDir .. "/SKK-JISYO.law"),
 				},
 				eggLikeNewline = true,
 			})
