@@ -1,5 +1,4 @@
 # plugin manager
-SHELDON_CONFIG_DIR="$ZDOTDIR/sheldon"
 eval "$(sheldon source)"
 
 # zsh-abbr
