@@ -28,7 +28,7 @@ config.font = wezterm.font_with_fallback({
 	"Noto Color Emoji",
 })
 config.font_size = 14
--- config.dpi = 96.0
+config.dpi = 96.0
 
 config.disable_default_key_bindings = true
 
