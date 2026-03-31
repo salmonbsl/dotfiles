@@ -41,7 +41,12 @@ end
 -- diagnostics
 vim.diagnostic.config({
 	virtual_text = true,
-	virtual_lines = { current_line = true },
+	virtual_lines = {
+		current_line = true,
+		format = function(diagnostic)
+			return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+		end,
+	},
 	underline = true,
 	severity_sort = true,
 	signs = {
