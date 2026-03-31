@@ -2,7 +2,11 @@ return {
 	{
 		"https://github.com/nvim-mini/mini.cursorword",
 		event = { "BufReadPost", "BufNewFile" },
-		config = true,
+		config = function()
+			require("mini.cursorword").setup()
+			vim.api.nvim_set_hl(0, "MiniCursorword", { link = "CursorLine" })
+			vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { link = "CursorLine" })
+		end,
 	},
 	{
 		"https://github.com/nvim-mini/mini.pairs",

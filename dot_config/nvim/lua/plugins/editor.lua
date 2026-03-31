@@ -1,6 +1,6 @@
 return {
 	{
-		"catppuccin/nvim",
+		"https://github.com/catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
 		init = function()
@@ -219,7 +219,7 @@ return {
 	},
 	{
 		"https://github.com/ruicsh/termite.nvim",
-    event = "VeryLazy",
+		event = "VeryLazy",
 		opts = {
 			position = "bottom",
 			keymaps = {
