@@ -217,21 +217,49 @@ return {
 			},
 		},
 	},
+	-- {
+	-- 	"https://github.com/ruicsh/termite.nvim",
+	-- 	event = "VeryLazy",
+	-- 	-- cmd = "Termite",
+	-- 	opts = {
+	-- 		position = "bottom",
+	-- 		keymaps = {
+	-- 			toggle = "<C-t>t",
+	-- 			create = "<C-n>",
+	-- 			next = "<C-]>",
+	-- 			prev = "<C-[>",
+	-- 			normal_mode = false,
+	-- 			focus_editor = false,
+	-- 			maximize = "<C-z>",
+	-- 			close = "q",
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"https://github.com/ruicsh/termite.nvim",
 		event = "VeryLazy",
-		opts = {
-			position = "bottom",
-			keymaps = {
-				toggle = "<C-\\>",
-				create = "<C-t>",
-				next = "<C-]>",
-				prev = "<C-[>",
-				normal_mode = false,
-				focus_editor = false,
-				maximize = "<C-z>",
-				close = "q",
-			},
+		config = function()
+			-- optsでの読み込みだとなぜかkeymapsが上書きされないので、configで設定
+			require("termite").setup({
+				position = "bottom",
+				keymaps = {
+					toggle = "<C-'><C-'>",
+					create = "<C-'>c",
+					next = "<C-'>[",
+					prev = "<C-'>]",
+					normal_mode = false,
+					focus_editor = false,
+					maximize = "<C-'>m",
+					close = "q",
+				},
+			})
+		end,
+		keys = {
+			{ "<C-'><C-'>", desc = "[t]oggle terminals", mode = { "n", "t" } },
+			{ "<C-'>c", desc = "[c]reate terminal", mode = { "n", "t" } },
+			{ "<C-'>]", desc = "Next terminal", mode = { "t" } },
+			{ "<C-'>[", desc = "Previous terminal", mode = { "t" } },
+			{ "<C-'>m", desc = "[m]aximize terminal", mode = { "t" } },
 		},
 	},
 }

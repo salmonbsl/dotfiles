@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 -- General
 map("i", "jk", "<ESC>", { noremap = true })
-map("t", [[<C-\>]], [[<C-\><C-n>]], { noremap = true })
+map("t", "<C-\\>", "<C-\\><C-n>", { noremap = true })
 map("n", "U", "<C-r>", { desc = "Redo" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll Up and Recenter" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Scroll Down and Recenter" })
