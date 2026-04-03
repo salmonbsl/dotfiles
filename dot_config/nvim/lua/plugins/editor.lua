@@ -240,26 +240,27 @@ return {
 		event = "VeryLazy",
 		config = function()
 			-- optsでの読み込みだとなぜかkeymapsが上書きされないので、configで設定
+			local leader = "<C-t>"
 			require("termite").setup({
 				position = "bottom",
 				keymaps = {
-					toggle = "<C-'><C-'>",
-					create = "<C-'>c",
-					next = "<C-'>[",
-					prev = "<C-'>]",
+					toggle = leader .. "t",
+					create = leader .. "c",
+					next = leader .. "]",
+					prev = leader .. "[",
 					normal_mode = false,
 					focus_editor = false,
-					maximize = "<C-'>m",
+					maximize = leader .. "m",
 					close = "q",
 				},
 			})
 		end,
 		keys = {
-			{ "<C-'><C-'>", desc = "[t]oggle terminals", mode = { "n", "t" } },
-			{ "<C-'>c", desc = "[c]reate terminal", mode = { "n", "t" } },
-			{ "<C-'>]", desc = "Next terminal", mode = { "t" } },
-			{ "<C-'>[", desc = "Previous terminal", mode = { "t" } },
-			{ "<C-'>m", desc = "[m]aximize terminal", mode = { "t" } },
+			{ "<C-t>t", desc = "[t]oggle terminals", mode = { "n", "t" } },
+			{ "<C-t>c", desc = "[c]reate terminal", mode = { "n", "t" } },
+			{ "<C-t>]", desc = "Next terminal", mode = { "t" } },
+			{ "<C-t>[", desc = "Previous terminal", mode = { "t" } },
+			{ "<C-t>m", desc = "[m]aximize terminal", mode = { "t" } },
 		},
 	},
 }
