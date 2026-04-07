@@ -70,17 +70,18 @@ return {
 
 			vim.lsp.config("emmet_language_server", {
 				filetypes = {
+					"astro",
+					"blade",
 					"css",
 					"eruby",
 					"html",
 					"javascript",
 					"javascriptreact",
 					"less",
+					"pug",
 					"sass",
 					"scss",
-					"pug",
 					"typescriptreact",
-					"blade",
 				},
 			})
 
@@ -204,6 +205,7 @@ return {
 					sh = { "shfmt" },
 					python = { "black" },
 					rust = { "rustfmt" },
+          astro = web_formatters,
 				},
 			}
 			return opts
