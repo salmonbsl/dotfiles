@@ -26,13 +26,13 @@ map("n", "<leader>w=", "<C-w>=", { desc = "Equally high and wide" })
 -- Tabs
 map("n", "<tab>", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<S-tab>", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "[f]irst Tab" })
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
-map("n", "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "[d]elete Tab" })
+map("n", "<leader><tab>D", "<cmd>tabonly<cr>", { desc = "[D]elete Other Tabs" })
+map("n", "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "[n]ew Tab" })
 
 -- Replacement
 map("n", "<leader>rr", ":%s/", { desc = "Replace" })

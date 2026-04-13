@@ -321,12 +321,12 @@ return {
 			desc = "[d]elete Buffer",
 		},
 		{
-			"<leader>bo",
+			"<leader>bD",
 			function()
 				Snacks.bufdelete.other()
 				vim.notify("Deleted other buffers", "info", { title = "Buffer" })
 			end,
-			desc = "[o]ther Buffers",
+			desc = "[D]elete Other Buffers",
 		},
 	},
 	init = function()
