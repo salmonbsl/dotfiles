@@ -4,7 +4,7 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		init = function()
-      -- なんかneovim0.12から見づらいので一旦tokyonightにする
+			-- なんかneovim0.12から見づらいので一旦tokyonightにする
 			-- vim.cmd([[colorscheme catppuccin]])
 		end,
 	},
@@ -31,8 +31,8 @@ return {
 					{ "<leader>r", group = "[r]eplace" },
 					{ "<leader>s", group = "[s]earch" },
 					{ "<leader>t", group = "[t]erminal" },
-					{ "<leader>w", group = "[w]indow" },
 					{ "<leader><tab>", group = "[tab]" },
+					{ "<C-w>", group = "[w]indow" },
 				},
 			},
 		},
