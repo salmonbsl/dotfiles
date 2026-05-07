@@ -4,17 +4,7 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		init = function()
-			-- なんかneovim0.12から見づらいので一旦tokyonightにする
-			-- vim.cmd([[colorscheme catppuccin]])
-		end,
-	},
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-		init = function()
-			vim.cmd([[colorscheme tokyonight]])
+			vim.cmd([[colorscheme catppuccin]])
 		end,
 	},
 	{
