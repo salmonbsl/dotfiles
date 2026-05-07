@@ -14,7 +14,7 @@ return {
 				keymap = {
 					prev = "<M-p>",
 					next = "<M-n>",
-					accept = "<M-CR>",
+					accept = "<C-;>",
 				},
 			},
 			filetypes = {
