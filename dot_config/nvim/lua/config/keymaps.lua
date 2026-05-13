@@ -11,7 +11,6 @@ map("n", "q:", "<Nop>", { desc = "Disable cmdwin" })
 map("n", "<Leader>w", "<Cmd>w<CR>", { desc = "[w]rite" })
 map("n", "<Leader>q", "<Cmd>q<CR>", { desc = "[q]uit" })
 map("n", "<Leader>Q", "<Cmd>qall<CR>", { desc = "[Q]uit all" })
-map("n", "<Leader>R", "<Cmd>restart<CR>", { desc = "[R]estart" })
 
 -- Windows
 map("n", "<C-w>-", ":split<CR><C-w>j", { desc = "Horizontal Split" })

@@ -20,6 +20,7 @@ return {
 					{ "<leader>c", group = "[c]ode" },
 					{ "<leader>r", group = "[r]eplace" },
 					{ "<leader>s", group = "[s]earch" },
+					{ "<leader>S", group = "[S]ession" },
 					{ "<leader>t", group = "[t]erminal" },
 					{ "<leader><tab>", group = "[tab]" },
 					{ "<C-w>", group = "[w]indow" },
@@ -73,33 +74,58 @@ return {
 		"https://github.com/nvim-mini/mini.sessions",
 		event = "VeryLazy",
 		config = true,
-		init = function()
-			vim.api.nvim_create_user_command("SessionSaveCwd", function()
-				local name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-				require("mini.sessions").write(name)
-			end, { desc = "Save session with cwd name" })
+		keys = {
+			{
+				"<leader>Ss",
+				function()
+					local name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+					require("mini.sessions").write(name)
+				end,
+				desc = "[s]ave Session",
+			},
 
-			vim.api.nvim_create_user_command("SessionDelete", function(arg)
-				require("mini.sessions").select("delete", { force = arg.bang })
-			end, { desc = "Delete session", bang = true })
+			{
+				"<leader>Sl",
+				function()
+					require("mini.sessions").select("read", { verbose = true })
+				end,
+				desc = "[l]oad Session",
+			},
 
-			vim.api.nvim_create_user_command("SessionLoad", function()
-				require("mini.sessions").select("read", { verbose = true })
-			end, { desc = "Load session" })
+			{
+				"<leader>Sd",
+				function()
+					require("mini.sessions").select("delete")
+				end,
+				desc = "[d]elete Session",
+			},
 
-			vim.api.nvim_create_user_command("SessionEscape", function()
-				vim.v.this_session = ""
-			end, { desc = "Escape session" })
+			{
+				"<leader>SD",
+				function()
+					require("mini.sessions").select("delete", { force = true })
+				end,
+				desc = "[D]elete Session (force)",
+			},
 
-			vim.api.nvim_create_user_command("SessionReveal", function()
-				local s = vim.v.this_session
-				if s == nil or s == "" then
-					vim.print("No session")
-					return
-				end
-				vim.print(vim.fn.fnamemodify(s, ":t:r"))
-			end, { desc = "Reveal session" })
-		end,
+			{
+				"<leader>Se",
+				function()
+					vim.v.this_session = ""
+				end,
+				desc = "[e]scape Session",
+			},
+
+			{
+				"<leader>R",
+				function()
+					local name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+					require("mini.sessions").write(name)
+          vim.cmd("restart")
+				end,
+				desc = "[r]estart Neovim",
+			},
+		},
 	},
 	{
 		"https://github.com/nvim-mini/mini.starter",
