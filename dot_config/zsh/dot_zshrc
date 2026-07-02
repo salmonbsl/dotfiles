@@ -79,5 +79,5 @@ export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 
 bindkey -v
-bindkey '^f' autosuggest-accept
+bindkey '^[[13;5u' autosuggest-accept
 
