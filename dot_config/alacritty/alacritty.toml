@@ -159,11 +159,6 @@ key = "Key0"
 mods = "Control"
 action = "ResetFontSize"
 
-[[keyboard.bindings]]
-key = "Enter"
-mods = "Control"
-chars = "\u001b[13;5u"
-
 [general]
 live_config_reload = true
 working_directory = "None"
