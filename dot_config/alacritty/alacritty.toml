@@ -64,47 +64,9 @@ action = "PasteSelection"
 
 [keyboard]
 [[keyboard.bindings]]
-key = "Paste"
-action = "Paste"
-
-[[keyboard.bindings]]
-key = "Copy"
-action = "Copy"
-
-[[keyboard.bindings]]
 key = "L"
 mods = "Control"
 action = "ClearLogNotice"
-
-[[keyboard.bindings]]
-key = "L"
-mods = "Control"
-mode = "~Vi"
-chars = "\f"
-
-[[keyboard.bindings]]
-key = "PageUp"
-mods = "Shift"
-mode = "~Alt"
-action = "ScrollPageUp"
-
-[[keyboard.bindings]]
-key = "PageDown"
-mods = "Shift"
-mode = "~Alt"
-action = "ScrollPageDown"
-
-[[keyboard.bindings]]
-key = "Home"
-mods = "Shift"
-mode = "~Alt"
-action = "ScrollToTop"
-
-[[keyboard.bindings]]
-key = "End"
-mods = "Shift"
-mode = "~Alt"
-action = "ScrollToBottom"
 
 [[keyboard.bindings]]
 key = "V"
@@ -127,13 +89,16 @@ mods = "Control|Shift"
 action = "SearchBackward"
 
 [[keyboard.bindings]]
-key = "C"
+key = "N"
 mods = "Control|Shift"
-mode = "Vi"
-action = "ClearSelection"
+action = "CreateNewWindow"
+
+[[keyboard.bindings]]
+key = "Enter"
+mods = "Control|Shift"
+action = "ToggleFullscreen"
 
 [[keyboard.bindings]]
 key = "Key0"
 mods = "Control"
 action = "ResetFontSize"
-
