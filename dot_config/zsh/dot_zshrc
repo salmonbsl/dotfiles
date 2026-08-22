@@ -15,11 +15,12 @@ eval "$(sheldon source)"
 ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
 
 # basics
-abbr -S ..='cd ..' > /dev/null
-abbr -S ...='cd ../../' > /dev/null
+abbr -S -q ..='cd ..'
+abbr -S -q ...='cd ../../'
+abbr -S -q nv='nvim'
 
 if command -v nix-collect-garbage >/dev/null 2>&1; then
-  abbr -S ncg='nix-collect-garbage -d' > /dev/null
+  abbr -S -q ncg='nix-collect-garbage -d'
 fi
 
 # ls
@@ -28,38 +29,48 @@ if command -v eza >/dev/null 2>&1; then
   alias eza='eza --icons=auto --group-directories-first'
 
   # -F をつけるとパス補完ができなくなるのではずす
-  abbr -S l='eza' > /dev/null
-  abbr -S la='eza -a' > /dev/null
-  abbr -S ll='eza -lah' > /dev/null
+  abbr -S -q l='eza'
+  abbr -S -q la='eza -a'
+  abbr -S -q ll='eza -lah'
 else
-  abbr -S l='ls -F' > /dev/null
-  abbr -S la='ls -aF' > /dev/null
-  abbr -S ll='ls -lahF' > /dev/null
+  abbr -S -q l='ls -F'
+  abbr -S -q la='ls -aF'
+  abbr -S -q ll='ls -lahF'
 fi
 
 # docker
-abbr -S d='docker' > /dev/null
-abbr -S dc='docker compose' > /dev/null
-abbr -S dcu='docker compose up' > /dev/null
-abbr -S dcud='docker compose up -d' > /dev/null
-abbr -S dcd='docker compose down' > /dev/null
-abbr -S dcp='docker compose ps' > /dev/null
-abbr -S dcl='docker compose logs' > /dev/null
-abbr -S dce='docker compose exec' > /dev/null
-abbr -S dcr='docker compose restart' > /dev/null
+abbr -S -q d='docker'
+abbr -S -q dc='docker compose'
+abbr -S -q dcu='docker compose up'
+abbr -S -q dcud='docker compose up -d'
+abbr -S -q dcd='docker compose down'
+abbr -S -q dcp='docker compose ps'
+abbr -S -q dcl='docker compose logs'
+abbr -S -q dce='docker compose exec'
+abbr -S -q dcr='docker compose restart'
 
 # git
-abbr -S g='git' > /dev/null
-abbr -S ga='git add' > /dev/null
-abbr -S ga.='git add .' > /dev/null
-abbr -S gcm='git commit -m "%"' > /dev/null
-abbr -S gco='git checkout %' > /dev/null
-abbr -S gst='git status' > /dev/null
-abbr -S gl='git log --oneline --graph --decorate --all' > /dev/null
-abbr -S gf='git fetch' > /dev/null
-abbr -S gp='git pull' > /dev/null
-abbr -S gP='git push' > /dev/null
-abbr -S gsw='git switch' > /dev/null
+abbr -S -q g='git'
+abbr -S -q ga='git add'
+abbr -S -q ga.='git add .'
+abbr -S -q gcm='git commit -m "%"'
+abbr -S -q gco='git checkout %'
+abbr -S -q gst='git status'
+abbr -S -q gl='git log --oneline --graph --decorate --all'
+abbr -S -q gf='git fetch'
+abbr -S -q gp='git pull'
+abbr -S -q gP='git push'
+abbr -S -q gsw='git switch'
+
+# chezmoi
+abbr -S -q cz='chezmoi'
+abbr -S -q cza='chezmoi -v apply'
+abbr -S -q czad='chezmoi add'
+abbr -S -q czd='chezmoi diff'
+abbr -S -q czs='chezmoi status'
+abbr -S -q cze='chezmoi edit'
+abbr -S -q czc='chezmoi cd'
+abbr -S -q czu='chezmoi -v update'
 
 # history
 HISTFILE="$XDG_STATE_HOME/zsh_history"
