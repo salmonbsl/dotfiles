@@ -81,3 +81,7 @@ export EDITOR="nvim"
 bindkey -v
 bindkey '^[;' autosuggest-accept
 
+# Homebrew
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+fi
