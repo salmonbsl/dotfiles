@@ -121,7 +121,7 @@ return {
 				function()
 					local name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 					require("mini.sessions").write(name)
-          vim.cmd("restart")
+					vim.cmd("restart")
 				end,
 				desc = "[r]estart Neovim",
 			},
@@ -236,11 +236,11 @@ return {
 				keymaps = {
 					toggle = leader .. "t",
 					create = leader .. "c",
-					next = leader .. "]",
-					prev = leader .. "[",
+					next = "<C-l>",
+					prev = "<C-h>",
 					normal_mode = false,
 					focus_editor = false,
-					maximize = leader .. "m",
+					maximize = "<C-f>",
 					close = "q",
 				},
 			})
