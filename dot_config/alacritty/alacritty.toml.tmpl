@@ -23,7 +23,11 @@ history = 10000
 multiplier = 3
 
 [font]
+{{- if eq .chezmoi.os "darwin" }}
+size = 18
+{{- else }}
 size = 14
+{{- end }}
 
 [font.normal]
 family = "UDEV Gothic 35NF"
