@@ -41,35 +41,43 @@ fi
 # docker
 abbr -S -q d='docker'
 abbr -S -q dc='docker compose'
+abbr -S -q dcd='docker compose down'
+abbr -S -q dce='docker compose exec'
+abbr -S -q dcl='docker compose logs'
+abbr -S -q dcp='docker compose ps'
+abbr -S -q dcr='docker compose restart'
 abbr -S -q dcu='docker compose up'
 abbr -S -q dcud='docker compose up -d'
-abbr -S -q dcd='docker compose down'
-abbr -S -q dcp='docker compose ps'
-abbr -S -q dcl='docker compose logs'
-abbr -S -q dce='docker compose exec'
-abbr -S -q dcr='docker compose restart'
 
 # git
 abbr -S -q g='git'
-abbr -S -q ga='git add'
 abbr -S -q ga.='git add .'
+abbr -S -q ga='git add'
+abbr -S -q gb='git branch'
+abbr -S -q gbm='git branch --merged $(git symbolic-ref --short refs/remotes/origin/HEAD)'
+abbr -S -q gbnm='git branch --no-merged $(git symbolic-ref --short refs/remotes/origin/HEAD)'
 abbr -S -q gcm='git commit -m "%"'
 abbr -S -q gco='git checkout %'
-abbr -S -q gst='git status'
+abbr -S -q gf='git fetch --prune'
 abbr -S -q gl='git log --oneline --graph --decorate --all'
-abbr -S -q gf='git fetch'
 abbr -S -q gp='git pull'
 abbr -S -q gP='git push'
+abbr -S -q gst='git status'
 abbr -S -q gsw='git switch'
+
+gctb() { # git create timestamped branch
+  [[ -n "$1" ]] || { echo "usage: gctb <branch-name>" >&2; return 1; }
+  git switch -c "$(date +%Y%m%d)-$1"
+}
 
 # chezmoi
 abbr -S -q cz='chezmoi'
 abbr -S -q cza='chezmoi -v apply'
 abbr -S -q czad='chezmoi add'
-abbr -S -q czd='chezmoi diff'
-abbr -S -q czs='chezmoi status'
-abbr -S -q cze='chezmoi edit'
 abbr -S -q czc='chezmoi cd'
+abbr -S -q czd='chezmoi diff'
+abbr -S -q cze='chezmoi edit'
+abbr -S -q czs='chezmoi status'
 abbr -S -q czu='chezmoi -v update'
 
 # history
