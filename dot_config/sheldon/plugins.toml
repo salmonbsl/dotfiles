@@ -26,6 +26,9 @@ github = "zsh-users/zsh-syntax-highlighting"
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
 
+[plugins.zsh-autosuggestions-abbreviations-strategy]
+github = "olets/zsh-autosuggestions-abbreviations-strategy"
+
 # For example:
 #
 # [plugins.base16]

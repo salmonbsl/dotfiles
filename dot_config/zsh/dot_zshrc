@@ -1,8 +1,18 @@
+# keymap
+bindkey -v
+bindkey '^[;' autosuggest-accept
+
+# zsh-abbr
+ABBR_SET_EXPANSION_CURSOR=1
+ABBR_GET_AVAILABLE_ABBREVIATION=1
+ABBR_LOG_AVAILABLE_ABBREVIATION=1
+ABBR_LOG_AVAILABLE_ABBREVIATION_AFTER=1
+
 # plugin manager
 eval "$(sheldon source)"
 
-# zsh-abbr
-export ABBR_SET_EXPANSION_CURSOR=1
+# zsh-autosuggestions-abbreviations-strategy
+ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
 
 # basics
 abbr -S ..='cd ..' > /dev/null
@@ -77,9 +87,6 @@ source <(fzf --zsh)
 
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
-
-bindkey -v
-bindkey '^[;' autosuggest-accept
 
 # Homebrew
 if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
