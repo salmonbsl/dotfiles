@@ -1,7 +1,3 @@
-[env]
-TERM = "xterm-256color"
-WINIT_X11_SCALE_FACTOR = "1"
-
 [general]
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 live_config_reload = true
@@ -64,11 +60,6 @@ action = "PasteSelection"
 
 [keyboard]
 [[keyboard.bindings]]
-key = "L"
-mods = "Control"
-action = "ClearLogNotice"
-
-[[keyboard.bindings]]
 key = "V"
 mods = "Control|Shift"
 action = "Paste"
@@ -79,22 +70,12 @@ mods = "Control|Shift"
 action = "Copy"
 
 [[keyboard.bindings]]
-key = "F"
-mods = "Control|Shift"
-action = "SearchForward"
-
-[[keyboard.bindings]]
-key = "B"
-mods = "Control|Shift"
-action = "SearchBackward"
-
-[[keyboard.bindings]]
 key = "N"
 mods = "Control|Shift"
 action = "CreateNewWindow"
 
 [[keyboard.bindings]]
-key = "Enter"
+key = "F"
 mods = "Control|Shift"
 action = "ToggleFullscreen"
 
