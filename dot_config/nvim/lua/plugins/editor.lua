@@ -224,43 +224,7 @@ return {
 				},
 			},
 		},
-		keys = {
-			{
-				"<c-j>",
-				function()
-					if not require("noice.lsp").scroll(4) then
-						return "<c-j>"
-					end
-				end,
-			},
-			{
-				"<c-k>",
-				function()
-					if not require("noice.lsp").scroll(-4) then
-						return "<c-k>"
-					end
-				end,
-			},
-		},
 	},
-	-- {
-	-- 	"https://github.com/ruicsh/termite.nvim",
-	-- 	event = "VeryLazy",
-	-- 	-- cmd = "Termite",
-	-- 	opts = {
-	-- 		position = "bottom",
-	-- 		keymaps = {
-	-- 			toggle = "<C-t>t",
-	-- 			create = "<C-n>",
-	-- 			next = "<C-]>",
-	-- 			prev = "<C-[>",
-	-- 			normal_mode = false,
-	-- 			focus_editor = false,
-	-- 			maximize = "<C-z>",
-	-- 			close = "q",
-	-- 		},
-	-- 	},
-	-- },
 	{
 		"https://github.com/ruicsh/termite.nvim",
 		event = "VeryLazy",
