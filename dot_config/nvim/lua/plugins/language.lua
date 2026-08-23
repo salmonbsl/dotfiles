@@ -141,7 +141,7 @@ return {
 							-- NOTE: this is a lot slower and will cause issues when working on
 							-- your own configuration.
 							-- See https://github.com/neovim/nvim-lspconfig/issues/3189
-							library = vim.api.nvim_get_runtime_file('', true),
+							library = vim.api.nvim_get_runtime_file("", true),
 						},
 					})
 				end,
@@ -187,6 +187,7 @@ return {
 			---@type conform.setupOpts
 			local opts = {
 				formatters_by_ft = {
+					astro = web_formatters,
 					blade = { "blade-formatter" },
 					css = web_formatters,
 					html = web_formatters,
@@ -194,6 +195,7 @@ return {
 					javascriptreact = web_formatters,
 					json = web_formatters,
 					jsonc = web_formatters,
+					kdl = { "kdlfmt" },
 					less = web_formatters,
 					lua = { "stylua" },
 					markdown = web_formatters,
@@ -206,7 +208,6 @@ return {
 					typescript = web_formatters,
 					typescriptreact = web_formatters,
 					yaml = { "yamlfmt" },
-          astro = web_formatters,
 				},
 			}
 			return opts
