@@ -1,3 +1,8 @@
+# Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 source "$ZDOTDIR/zim.zsh"
 
 #
@@ -117,11 +122,6 @@ abbr -S -q czs='chezmoi status'
 abbr -S -q czu='chezmoi -v update'
 
 #
-# starchip
-#
-eval "$(starship init zsh)"
-
-#
 # zoxide
 #
 eval "$(zoxide init zsh)"
@@ -137,3 +137,6 @@ source <(fzf --zsh)
 if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 fi
+
+# Powerlevel10k
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
