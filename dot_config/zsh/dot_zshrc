@@ -1,20 +1,48 @@
-# keymap
+source "$ZDOTDIR/zim.zsh"
+
+#
+# Input/output
+#
 bindkey -v
 bindkey '^[;' autosuggest-accept
 
+setopt CORRECT
+WORDCHARS=${WORDCHARS//[\/]}
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+#
+# History
+#
+HISTFILE="$XDG_STATE_HOME/zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+#
 # zsh-abbr
+#
 ABBR_SET_EXPANSION_CURSOR=1
 ABBR_GET_AVAILABLE_ABBREVIATION=1
 ABBR_LOG_AVAILABLE_ABBREVIATION=1
 ABBR_LOG_AVAILABLE_ABBREVIATION_AFTER=1
 
-# plugin manager
-eval "$(sheldon source)"
-
+#
 # zsh-autosuggestions-abbreviations-strategy
+#  
 ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
 
+#
 # basics
+#
+export PATH="$HOME/.local/bin:$PATH"
+
 abbr -S -q ..='cd ..'
 abbr -S -q ...='cd ../../'
 abbr -S -q nv='nvim'
@@ -23,7 +51,9 @@ if command -v nix-collect-garbage >/dev/null 2>&1; then
   abbr -S -q ncg='nix-collect-garbage -d'
 fi
 
+#
 # ls
+#
 alias ls='ls --color=auto'
 if command -v eza >/dev/null 2>&1; then
   alias eza='eza --icons=auto --group-directories-first'
@@ -38,7 +68,10 @@ else
   abbr -S -q ll='ls -lahF'
 fi
 
+
+#
 # docker
+#
 abbr -S -q d='docker'
 abbr -S -q dc='docker compose'
 abbr -S -q dcd='docker compose down'
@@ -49,7 +82,9 @@ abbr -S -q dcr='docker compose restart'
 abbr -S -q dcu='docker compose up'
 abbr -S -q dcud='docker compose up -d'
 
+#
 # git
+#
 abbr -S -q g='git'
 abbr -S -q ga.='git add .'
 abbr -S -q ga='git add'
@@ -64,13 +99,14 @@ abbr -S -q gp='git pull'
 abbr -S -q gP='git push'
 abbr -S -q gst='git status'
 abbr -S -q gsw='git switch'
-
 gctb() { # git create timestamped branch
   [[ -n "$1" ]] || { echo "usage: gctb <branch-name>" >&2; return 1; }
   git switch -c "$1-$(date +%y%m%d)"
 }
 
+#
 # chezmoi
+#
 abbr -S -q cz='chezmoi'
 abbr -S -q cza='chezmoi -v apply'
 abbr -S -q czad='chezmoi add'
@@ -80,34 +116,24 @@ abbr -S -q cze='chezmoi edit'
 abbr -S -q czs='chezmoi status'
 abbr -S -q czu='chezmoi -v update'
 
-# history
-HISTFILE="$XDG_STATE_HOME/zsh_history"
-HISTSIZE=100000
-SAVEHIST=100000
-setopt hist_expire_dups_first
-setopt hist_ignore_all_dups
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_reduce_blanks
-setopt inc_append_history
-setopt share_history
-
-# completion
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
+#
 # starchip
+#
 eval "$(starship init zsh)"
 
+#
 # zoxide
+#
 eval "$(zoxide init zsh)"
 
+#
 # fzf
+#
 source <(fzf --zsh)
 
-export PATH="$HOME/.local/bin:$PATH"
-export EDITOR="nvim"
-
+#
 # Homebrew
+#
 if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 fi

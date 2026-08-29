@@ -1,0 +1,23 @@
+zmodule environment
+zmodule input
+zmodule termtitle
+
+# # Exposes how long the last command took to run to prompts.
+# zmodule duration-info
+# # Exposes git repository status information to prompts.
+# zmodule git-info
+# # Formats the current working directory for prompts.
+# zmodule prompt-pwd
+# # A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
+# zmodule asciiship
+
+zmodule zsh-users/zsh-completions --fpath src
+zmodule completion
+
+zmodule zsh-users/zsh-syntax-highlighting
+
+zmodule zsh-users/zsh-history-substring-search
+
+zmodule olets/zsh-abbr
+zmodule zsh-users/zsh-autosuggestions
+zmodule olets/zsh-autosuggestions-abbreviations-strategy
