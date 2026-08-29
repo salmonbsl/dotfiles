@@ -67,7 +67,7 @@ abbr -S -q gsw='git switch'
 
 gctb() { # git create timestamped branch
   [[ -n "$1" ]] || { echo "usage: gctb <branch-name>" >&2; return 1; }
-  git switch -c "$(date +%Y%m%d)-$1"
+  git switch -c "$1-$(date +%y%m%d)"
 }
 
 # chezmoi
