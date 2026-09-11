@@ -113,10 +113,7 @@ abbr -S -q gp='git pull'
 abbr -S -q gP='git push'
 abbr -S -q gst='git status'
 abbr -S -q gsw='git switch'
-gctb() { # git create timestamped branch
-  [[ -n "$1" ]] || { echo "usage: gctb <branch-name>" >&2; return 1; }
-  git switch -c "$1-$(date +%y%m%d)"
-}
+abbr -S -q gswcd="git switch -c %-$(date +%y%m%d)"
 
 #
 # chezmoi
