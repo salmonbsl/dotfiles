@@ -60,6 +60,7 @@ export PATH="$HOME/.local/bin:$PATH"
 abbr -S -q ..='cd ..'
 abbr -S -q ...='cd ../../'
 abbr -S -q nv='nvim'
+abbr -S -q nvmini='NVIM_APPNAME=nvim-minimal nvim'
 
 if command -v nix-collect-garbage >/dev/null 2>&1; then
   abbr -S -q ncg='nix-collect-garbage -d'
