@@ -1,22 +1,25 @@
+local map = require("utils").map
+
 vim.pack.add({
 	"https://github.com/folke/snacks.nvim",
 })
 
 require("snacks").setup({
 	picker = {
+		-- ui_select = true,
 		formatters = {
 			file = { filename_first = true },
 		},
 	},
+	explorer = {},
 	indent = {
 		chunk = {
 			enabled = true,
 		},
 	},
 	notifier = {},
-	-- scroll = {
-	-- 	animate = { total = 100 },
-	-- },
+	toggle = {},
+	rename = {},
 	zen = {
 		toggles = {
 			dim = false,
@@ -24,42 +27,96 @@ require("snacks").setup({
 	},
 })
 
-local map = vim.keymap.set
-
-map("n", "<leader><space>", function()
-	Snacks.picker.smart()
-end, {
+map({
+	"<leader><space>",
+	function()
+		Snacks.picker.smart()
+	end,
 	desc = "Smart Find Files",
 })
 
-map("n", "<leader>,", function()
-	Snacks.picker.buffers()
-end, {
+map({
+	"<leader>,",
+	function()
+		Snacks.picker.buffers()
+	end,
 	desc = "Buffers",
 })
 
-map("n", "<leader>/", function()
-	Snacks.picker.grep()
-end, {
+map({
+	"<leader>/",
+	function()
+		Snacks.picker.grep()
+	end,
 	desc = "Grep",
 })
 
-map("n", "<leader>z", function()
-	Snacks.zen()
-end, {
+map({
+	"<leader>:",
+	function()
+		Snacks.picker.command_history()
+	end,
+	desc = "Command History",
+})
+
+map({
+	"<leader>?",
+	function()
+		Snacks.picker.help()
+	end,
+	desc = "Help",
+})
+
+-- Explorer
+map({
+	"<leader>e",
+	function()
+		Snacks.picker.explorer({
+			layout = {
+				preset = "default",
+				preview = true,
+			},
+			auto_close = true,
+			win = {
+				input = {
+					keys = {
+						["<CR>"] = { "jump", mode = { "n", "i" } },
+					},
+				},
+				list = {
+					keys = {
+						["<CR>"] = "jump",
+					},
+				},
+			},
+		})
+	end,
+})
+
+-- Zen
+map({
+	"<leader>z",
+	function()
+		Snacks.zen()
+	end,
 	desc = "[z]en Mode",
 })
 
-map("n", "<leader>bd", function()
-	Snacks.bufdelete()
-end, {
+-- Buffers
+map({
+	"<leader>bd",
+	function()
+		Snacks.bufdelete()
+	end,
 	desc = "[d]elete Buffer",
 })
 
-map("n", "<leader>bD", function()
-	Snacks.bufdelete.other()
-	vim.notify("Deleted other buffers", "info", { title = "Buffer" })
-end, {
+map({
+	"<leader>bD",
+	function()
+		Snacks.bufdelete.other()
+		vim.notify("Deleted other buffers", "info", { title = "Buffer" })
+	end,
 	desc = "[D]elete Other Buffers",
 })
 

@@ -2,7 +2,8 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.nvim",
 })
 
-local map = vim.keymap.set
+local map = require("utils").map
+local set_hl = require("utils").set_hl
 
 local extra = require("mini.extra")
 
@@ -16,8 +17,8 @@ require("mini.statusline").setup()
 
 -- Coding
 require("mini.cursorword").setup()
-vim.api.nvim_set_hl(0, "MiniCursorword", { link = "CursorLine" })
-vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { link = "CursorLine" })
+set_hl("MiniCursorword", { link = "CursorLine" })
+set_hl("MiniCursorwordCurrent", { link = "CursorLine" })
 
 require("mini.trailspace").setup()
 
@@ -25,18 +26,7 @@ require("mini.pairs").setup({
 	modes = { insert = true, command = true, terminal = false },
 })
 
-require("mini.move").setup({
-  mappings = {
-    left = "<C-S-h>",
-    right = "<C-S-l>",
-    down = "<C-S-j>",
-    up = "<C-S-k>",
-    line_left = "<C-S-h>",
-    line_right = "<C-S-l>",
-    line_down = "<C-S-j>",
-    line_up = "<C-S-k>",
-  }
-})
+require("mini.move").setup()
 
 require("mini.splitjoin").setup({
 	mappings = {
@@ -77,6 +67,12 @@ ai.setup({
 		U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }),
 		B = extra.gen_ai_spec.buffer(),
 	},
+	mappings = {
+		around_next = "",
+		inside_next = "",
+		around_last = "",
+		inside_last = "",
+	},
 })
 
 local hipatterns = require("mini.hipatterns")
@@ -91,26 +87,6 @@ require("mini.hipatterns").setup({
 		-- Highlight hex color strings (`#rrggbb`) using that color
 		hex_color = hipatterns.gen_highlighter.hex_color(),
 	},
-})
-
--- Files
-require("mini.files").setup({
-	windows = {
-		preview = true,
-	},
-})
-
-map("n", "<leader>e", function()
-	MiniFiles.open(vim.api.nvim_buf_get_name(0))
-	MiniFiles.reveal_cwd()
-end, {
-	desc = "File [e]xplorer",
-})
-
-map("n", "<leader>E", function()
-	MiniFiles.open()
-end, {
-	desc = "File [E]xplorer (CWD)",
 })
 
 -- Completion
@@ -129,12 +105,29 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-map("i", "<tab>", function()
-	if vim.fn.pumvisible() == 1 then
-		return "<c-y>"
-	end
-	return "tab"
-end, { expr = true })
+map({
+	"<tab>",
+	function()
+		if vim.fn.pumvisible() == 1 then
+			return "<c-y>"
+		end
+		return "<tab>"
+	end,
+	modes = "i",
+	expr = true,
+})
+
+map({
+	"<cr>",
+	function()
+		if vim.fn.pumvisible() == 1 then
+			return "<c-e><cr>"
+		end
+		return "<cr>"
+	end,
+	modes = "i",
+	expr = true,
+})
 
 -- Sessions
 require("mini.sessions").setup()
@@ -144,38 +137,49 @@ local function save_session()
 	require("mini.sessions").write(name)
 end
 
-map("n", "<leader>Ss", save_session, {
+map({
+	"<leader>Ss",
+	save_session,
 	desc = "[s]ave Session",
 })
 
-map("n", "<leader>Sl", function()
-	require("mini.sessions").select("read", { verbose = true })
-end, {
+map({
+	"<leader>Sl",
+	function()
+		require("mini.sessions").select("read", { verbose = true })
+	end,
 	desc = "[l]oad Session",
 })
 
-map("n", "<leader>Sd", function()
-	require("mini.sessions").select("delete")
-end, {
+map({
+	"<leader>Sd",
+	function()
+		require("mini.sessions").select("delete")
+	end,
 	desc = "[d]elete Session",
 })
 
-map("n", "<leader>SD", function()
-	require("mini.sessions").select("delete", { force = true })
-end, {
+map({
+	"<leader>SD",
+	function()
+		require("mini.sessions").select("delete", { force = true })
+	end,
 	desc = "[D]elete Session (force)",
 })
 
-map("n", "<leader>Se", function()
-	vim.v.this_session = ""
-end, {
+map({
+	"<leader>Se",
+	function()
+		vim.v.this_session = ""
+	end,
 	desc = "[e]scape Session",
 })
 
-map("n", "<leader>R", function()
-	save_session()
-	vim.cmd("restart")
-end, {
+map({
+	"<leader>R",
+	function()
+		save_session()
+		vim.cmd("restart")
+	end,
 	desc = "[r]estart Neovim",
 })
-

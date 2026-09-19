@@ -162,6 +162,9 @@ require("mason").setup({
 		},
 	},
 })
+vim.keymap.set("n", "<leader>mm", "<cmd>Mason<cr>", {
+	desc = "[m]ason",
+})
 
 vim.pack.add({
 	"https://github.com/mason-org/mason-lspconfig.nvim",

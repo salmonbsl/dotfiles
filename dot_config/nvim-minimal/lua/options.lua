@@ -1,44 +1,51 @@
-local o,g=vim.opt,vim.g
+local o, g = vim.opt, vim.g
 
-g.mapleader, g.maplocalleader = " ", "\\"
+-- Leader Keys
+g.mapleader = " "
+g.maplocalleader = "\\"
 
+-- General
 o.clipboard = "unnamedplus"
-o.cursorline = true
-o.ignorecase = true
-o.linebreak = true
-o.relativenumber = true
+o.swapfile = false
 o.scrolloff = 5
 o.shiftround = true
-o.smartcase = true
-o.splitbelow = true
-o.splitright = true
-o.swapfile = false
 o.whichwrap = "b,s,h,l,<,>,[,],~"
-o.winborder = "solid"
-o.wrap = true
 
--- Indentation
+-- Search
+o.ignorecase = true
+o.smartcase = true
+
+-- Editing
 o.autoindent = true
 o.breakindent = true
 o.expandtab = true
+o.linebreak = true
 o.shiftwidth = 2
 o.smartindent = true
 o.softtabstop = -1
 o.tabstop = 2
+o.wrap = true
 
--- Visual Settings
-o.cmdheight = 0;
-o.laststatus = 3;
+-- UI
+o.cmdheight = 0
+o.cursorline = true
+o.laststatus = 3
 o.number = true
+o.relativenumber = true
 o.showbreak = ">>"
 o.signcolumn = "yes"
 o.termguicolors = true
+o.winborder = "solid"
+
+-- Windows
+o.splitbelow = true
+o.splitright = true
 
 -- Completion
 o.complete = { ".", "w", "k", "b", "u" }
 o.completeopt = { "menuone", "noinsert", "fuzzy" }
 
--- SSH 用 OSC52
+-- SSH OSC52
 local function paste()
 	return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
 end

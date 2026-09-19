@@ -1,64 +1,75 @@
-
-local map = vim.keymap.set
+local map = require("utils").map
 
 -- General
-map("i", "jk", "<ESC>", { noremap = true })
-map("t", "<C-\\>", "<C-\\><C-n>", { noremap = true })
-map("n", "U", "<C-r>", { desc = "Redo" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Scroll Up and Recenter" })
-map("n", "<C-d>", "<C-d>zz", { desc = "Scroll Down and Recenter" })
-map("n", "<ESC>", "<Cmd>noh<CR>", { desc = "Clear highlights" })
-map("n", "q:", "<Nop>", { desc = "Disable cmdwin" })
-map("n", "<Leader>w", "<Cmd>w<CR>", { desc = "[w]rite" })
-map("n", "<Leader>q", "<Cmd>q<CR>", { desc = "[q]uit" })
-map("n", "<Leader>Q", "<Cmd>qall<CR>", { desc = "[Q]uit all" })
--- map("n", "<Leader>l", "<Cmd>Lazy<CR>", { desc = "[l]azy" })
+map({ "jk", "<ESC>", modes = "i", noremap = true })
+map({ "<C-\\>", "<C-\\><C-n>", modes = "t", noremap = true })
+map({ "U", "<C-r>", desc = "Redo" })
+map({ "<C-u>", "<C-u>zz", desc = "Scroll Up (Centered)" })
+map({ "<C-d>", "<C-d>zz", desc = "Scroll Down (Centered)" })
+map({ "n", "nzzzv", desc = "Next Search Result (Centered)" })
+map({ "N", "Nzzzv", desc = "Prev Search Result (Centered)" })
+map({ "<ESC>", "<Cmd>noh<CR>", desc = "Clear highlights" })
+map({ "q:", "<Nop>", desc = "Disable cmdwin" })
+map({ "<Leader>w", "<Cmd>w<CR>", desc = "[w]rite" })
+map({ "<Leader>q", "<Cmd>q<CR>", desc = "[q]uit" })
+map({ "<Leader>Q", "<Cmd>qall<CR>", desc = "[Q]uit all" })
 
 -- Windows
-map("n", "<C-w>-", ":split<CR><C-w>j", { desc = "Horizontal Split" })
-map("n", "<C-w>\\", ":vsplit<CR><C-w>l", { desc = "Vertical Split" })
-map("n", "<leader>-", ":split<CR><C-w>j", { desc = "Horizontal Split" })
-map("n", "<leader>\\", ":vsplit<CR><C-w>l", { desc = "Vertical Split" })
-map("n", "<C-w>d", "<Cmd>close<CR>", { desc = "[d]elete Window" })
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
-map("t", "<C-h>", [[<Cmd>wincmd h<CR>]])
-map("t", "<C-j>", [[<Cmd>wincmd j<CR>]])
-map("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
-map("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
+map({ "<C-w>-", "<Cmd>split<CR>", desc = "Horizontal Split" })
+map({ "<C-w>\\", "<Cmd>vsplit<CR>", desc = "Vertical Split" })
+map({ "<leader>-", "<Cmd>split<CR>", desc = "Horizontal Split" })
+map({ "<leader>\\", "<Cmd>vsplit<CR>", desc = "Vertical Split" })
+map({ "<C-w>d", "<Cmd>close<CR>", desc = "[d]elete Window" })
+map({ "<C-h>", "<C-w>h" })
+map({ "<C-j>", "<C-w>j" })
+map({ "<C-k>", "<C-w>k" })
+map({ "<C-l>", "<C-w>l" })
+map({ "<C-h>", [[<Cmd>wincmd h<CR>]], modes = "t" })
+map({ "<C-j>", [[<Cmd>wincmd j<CR>]], modes = "t" })
+map({ "<C-k>", [[<Cmd>wincmd k<CR>]], modes = "t" })
+map({ "<C-l>", [[<Cmd>wincmd l<CR>]], modes = "t" })
 
 -- Tabs
-map("n", "<tab>", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map("n", "<S-tab>", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "[f]irst Tab" })
-map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "[d]elete Tab" })
-map("n", "<leader><tab>D", "<cmd>tabonly<cr>", { desc = "[D]elete Other Tabs" })
-map("n", "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "[n]ew Tab" })
+map({ "<tab>", "<cmd>tabnext<cr>", desc = "Next Tab" })
+map({ "<S-tab>", "<cmd>tabprevious<cr>", desc = "Previous Tab" })
+map({ "<leader><tab>f", "<cmd>tabfirst<cr>", desc = "[f]irst Tab" })
+map({ "<leader><tab>l", "<cmd>tablast<cr>", desc = "Last Tab" })
+map({ "<leader><tab>]", "<cmd>tabnext<cr>", desc = "Next Tab" })
+map({ "<leader><tab>[", "<cmd>tabprevious<cr>", desc = "Previous Tab" })
+map({ "<leader><tab>d", "<cmd>tabclose<cr>", desc = "[d]elete Tab" })
+map({ "<leader><tab>D", "<cmd>tabonly<cr>", desc = "[D]elete Other Tabs" })
+map({ "<leader><tab>n", "<cmd>tabnew<cr>", desc = "[n]ew Tab" })
 
 -- Replacement
-map("n", "<leader>rr", ":%s/", { desc = "Replace" })
-map("x", "<leader>rr", ":s/", { desc = "Replace (Selection)" })
-map("n", "<leader>rv", ":%s/\\v", { desc = "Regex Replace" })
-map("x", "<leader>rv", ":s/\\v", { desc = "Regex Replace (Selection)" })
-map("n", "<leader>rV", ":%s/\\V", { desc = "Literal Replace" })
-map("x", "<leader>rV", ":s/\\V", { desc = "Literal Replace (Selection)" })
+map({ "<leader>rr", ":%s/", desc = "Replace" })
+map({ "<leader>rr", ":s/", modes = "x", desc = "Replace (Selection)" })
+map({ "<leader>rv", ":%s/\\v", desc = "Regex Replace" })
+map({ "<leader>rv", ":s/\\v", modes = "x", desc = "Regex Replace (Selection)" })
+map({ "<leader>rV", ":%s/\\V", desc = "Literal Replace" })
+map({ "<leader>rV", ":s/\\V", modes = "x", desc = "Literal Replace (Selection)" })
 
 -- Coding
-map({ "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens" })
-map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
-map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-map("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-map("n", "g/", "gcc", { remap = true, desc = "Toggle Comment Line" })
-map("x", "g/", "gc", { remap = true, desc = "Toggle Comment" })
+map({ "g/", "gcc", remap = true, desc = "Toggle Comment Line" })
+map({ "g/", "gc", modes = "x", remap = true, desc = "Toggle Comment" })
 
 -- Pasting
-map({ "n", "x" }, "<leader>p", '"0p', { noremap = true, silent = true, desc = "Paste from yank register" })
-map({ "n", "x" }, "<leader>P", '"0P', { noremap = true, silent = true, desc = "Paste before from yank register" })
+map({
+	"<leader>p",
+	'"0p',
+	modes = { "n", "x" },
+	noremap = true,
+	silent = true,
+	desc = "Paste from yank register",
+})
+
+map({
+	"<leader>P",
+	'"0P',
+	modes = { "n", "x" },
+	noremap = true,
+	silent = true,
+	desc = "Paste before from yank register",
+})
 
 -- Diagnostics
 local diagnostic_goto = function(next, severity)
@@ -68,13 +79,21 @@ local diagnostic_goto = function(next, severity)
 			float = true,
 			severity = severity and vim.diagnostic.severity[severity] or nil,
 		})
-		severity = severity and vim.diagnostic.severity[severity] or nil
 	end
 end
-map("n", "ge", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
-map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
-map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
-map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
-map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
-map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
-map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+map({ "ge", vim.diagnostic.open_float, desc = "Line Diagnostics" })
+map({ "]d", diagnostic_goto(true), desc = "Next Diagnostic" })
+map({ "[d", diagnostic_goto(false), desc = "Prev Diagnostic" })
+map({ "]e", diagnostic_goto(true, "ERROR"), desc = "Next Error" })
+map({ "[e", diagnostic_goto(false, "ERROR"), desc = "Prev Error" })
+map({ "]w", diagnostic_goto(true, "WARN"), desc = "Next Warning" })
+map({ "[w", diagnostic_goto(false, "WARN"), desc = "Prev Warning" })
+
+-- Packages
+map({
+	"<leader>mp",
+	function()
+		vim.pack.update()
+	end,
+	desc = "[u]pdate Packages",
+})

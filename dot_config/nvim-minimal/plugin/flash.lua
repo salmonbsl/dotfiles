@@ -1,27 +1,57 @@
 vim.pack.add({
-  "https://github.com/folke/flash.nvim",
+	"https://github.com/folke/flash.nvim",
 })
 
 require("flash").setup()
 
-local map = vim.keymap.set
+local set_hl = require("utils").set_hl
+local map = require("utils").map
 
-map({ "n", "x", "o" }, "s", function()
-    require("flash").jump()
-end, { desc = "Flash" })
+map({
+	"s",
+	function()
+		require("flash").jump()
+	end,
+	modes = { "n", "x", "o" },
+	desc = "Flash",
+})
 
-map({ "n", "x", "o" }, "S", function()
-    require("flash").treesitter()
-end, { desc = "Flash Treesitter" })
+map({
+	"S",
+	function()
+		require("flash").treesitter()
+	end,
+	modes = { "n", "x", "o" },
+	desc = "Flash Treesitter",
+})
 
-map("o", "r", function()
-    require("flash").remote()
-end, { desc = "Remote Flash" })
+map({
+	"r",
+	function()
+		require("flash").remote()
+	end,
+	modes = "o",
+	desc = "Remote Flash",
+})
 
-map({ "o", "x" }, "R", function()
-    require("flash").treesitter_search()
-end, { desc = "Treesitter Search" })
+map({
+	"R",
+	function()
+		require("flash").treesitter_search()
+	end,
+	modes = { "o", "x" },
+	desc = "Treesitter Search",
+})
 
-map("c", "<c-s>", function()
-    require("flash").toggle()
-end, { desc = "Toggle Flash Search" })
+map({
+	"<c-s>",
+	function()
+		require("flash").toggle()
+	end,
+	modes = "c",
+	desc = "Toggle Flash Search",
+})
+
+set_hl("FlashLabel", {
+	link = "Title",
+})
