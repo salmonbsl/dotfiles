@@ -20,14 +20,10 @@ map({ "<C-w>\\", "<Cmd>vsplit<CR>", desc = "Vertical Split" })
 map({ "<leader>-", "<Cmd>split<CR>", desc = "Horizontal Split" })
 map({ "<leader>\\", "<Cmd>vsplit<CR>", desc = "Vertical Split" })
 map({ "<C-w>d", "<Cmd>close<CR>", desc = "[d]elete Window" })
-map({ "<C-h>", "<C-w>h" })
-map({ "<C-j>", "<C-w>j" })
-map({ "<C-k>", "<C-w>k" })
-map({ "<C-l>", "<C-w>l" })
-map({ "<C-h>", [[<Cmd>wincmd h<CR>]], modes = "t" })
-map({ "<C-j>", [[<Cmd>wincmd j<CR>]], modes = "t" })
-map({ "<C-k>", [[<Cmd>wincmd k<CR>]], modes = "t" })
-map({ "<C-l>", [[<Cmd>wincmd l<CR>]], modes = "t" })
+map({ "<C-S-H>", "<C-w><S-H>" })
+map({ "<C-S-J>", "<C-w><S-J>" })
+map({ "<C-S-K>", "<C-w><S-K>" })
+map({ "<C-S-L>", "<C-w><S-L>" })
 
 -- Tabs
 map({ "<tab>", "<cmd>tabnext<cr>", desc = "Next Tab" })
@@ -95,5 +91,5 @@ map({
 	function()
 		vim.pack.update()
 	end,
-	desc = "[u]pdate Packages",
+	desc = "Update [p]ackages",
 })

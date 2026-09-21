@@ -56,7 +56,7 @@ map({
 	function()
 		Snacks.picker.command_history()
 	end,
-	desc = "Command History",
+	desc = "Search Command History",
 })
 
 map({
@@ -65,6 +65,14 @@ map({
 		Snacks.picker.help()
 	end,
 	desc = "Help",
+})
+
+map({
+	"<leader>sm",
+	function()
+		Snacks.picker.man()
+	end,
+	desc = "Search [m]an",
 })
 
 -- Explorer

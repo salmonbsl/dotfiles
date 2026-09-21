@@ -11,8 +11,8 @@ require("copilot").setup({
 		auto_trigger = true,
 		hide_during_completion = false,
 		keymap = {
-			prev = "<M-p>",
-			next = "<M-n>",
+			prev = "<M-[>",
+			next = "<M-]>",
 			accept = "<M-;>",
 		},
 	},
