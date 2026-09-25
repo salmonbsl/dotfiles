@@ -6,7 +6,7 @@ vim.pack.add({
 
 require("snacks").setup({
 	picker = {
-		-- ui_select = true,
+		ui_select = true,
 		formatters = {
 			file = { filename_first = true },
 		},
@@ -90,6 +90,7 @@ map({
 			auto_close = true,
 			cwd = root,
 			follow_file = true,
+			hidden = true,
 			win = {
 				input = {
 					keys = {
