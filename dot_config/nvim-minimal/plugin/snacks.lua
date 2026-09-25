@@ -79,12 +79,17 @@ map({
 map({
 	"<leader>e",
 	function()
+		local file = vim.api.nvim_buf_get_name(0)
+		local root = vim.fs.root(file, ".git") or vim.fs.dirname(file)
+
 		Snacks.picker.explorer({
 			layout = {
 				preset = "default",
 				preview = true,
 			},
 			auto_close = true,
+			cwd = root,
+			follow_file = true,
 			win = {
 				input = {
 					keys = {
@@ -97,6 +102,9 @@ map({
 					},
 				},
 			},
+			on_show = function(picker)
+				picker:action("explorer_close_all")
+			end,
 		})
 	end,
 })
