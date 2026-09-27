@@ -17,20 +17,6 @@ autocmd({ "VimResized" }, {
 	end,
 })
 
-autocmd("LspAttach", {
-	group = augroup("lsp_attach"),
-	callback = function(arg)
-		map({
-			"<leader>f",
-			function()
-				vim.lsp.buf.format({ acync = true })
-			end,
-			desc = "[f]ormat buffer",
-			buffer = arg.buf
-		})
-	end,
-})
-
 local cmdheight_grp = augroup("cmdheight")
 autocmd({ "RecordingEnter", "CmdlineEnter" }, {
 	group = cmdheight_grp,
