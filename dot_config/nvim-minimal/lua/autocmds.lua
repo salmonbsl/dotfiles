@@ -1,4 +1,3 @@
-local map = require("utils").map
 local augroup = require("utils").augroup
 local autocmd = vim.api.nvim_create_autocmd
 

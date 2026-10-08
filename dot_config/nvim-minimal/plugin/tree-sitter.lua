@@ -1,3 +1,6 @@
+local augroup = require("utils").augroup
+local autocmd = vim.api.nvim_create_autocmd
+
 vim.pack.add({
 	"https://github.com/romus204/tree-sitter-manager.nvim",
 	"https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
@@ -14,4 +17,13 @@ require("ts-comments").setup()
 
 vim.keymap.set("n", "<leader>mt", "<cmd>TSManager<cr>", {
 	desc = "[t]ree-sitter Manager",
+})
+
+local indent_grp = augroup("treesitter_indent")
+autocmd("FileType", {
+  group = indent_grp,
+  pattern = "php",
+  callback = function(ev)
+    vim.bo[ev.buf].syntax = "ON"
+  end
 })
