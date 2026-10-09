@@ -15,6 +15,21 @@ require("mini.starter").setup()
 require("mini.diff").setup()
 require("mini.statusline").setup()
 
+local minimap = require("mini.map")
+minimap.setup({
+	integrations = {
+		minimap.gen_integration.builtin_search(),
+		minimap.gen_integration.diff(),
+		minimap.gen_integration.diagnostic(),
+	},
+	symbols = {
+		scroll_line = "▶",
+	},
+})
+map({ "<leader>mf", MiniMap.toggle_focus, desc = "MiniMap Toggle [f]ocus" })
+map({ "<leader>ms", MiniMap.toggle_side, desc = "MiniMap Toggle [s]ide" })
+map({ "<leader>mt", MiniMap.toggle, desc = "MiniMap [t]oggle" })
+
 -- Coding
 require("mini.cursorword").setup()
 set_hl("MiniCursorword", { link = "CursorLine" })
