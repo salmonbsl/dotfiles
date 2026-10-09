@@ -91,7 +91,7 @@ map({ "[w", diagnostic_goto(false, "WARN"), desc = "Prev Warning" })
 
 -- Packages
 map({
-	"<leader>mp",
+	"<leader>Mp",
 	function()
 		vim.pack.update()
 	end,

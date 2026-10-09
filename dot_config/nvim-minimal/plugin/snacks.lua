@@ -10,6 +10,17 @@ require("snacks").setup({
 		formatters = {
 			file = { filename_first = true },
 		},
+		sources = {
+			explorer = {
+				win = {
+					list = {
+						keys = {
+							["<C-c>"] = "cancel",
+						},
+					},
+				},
+			},
+		},
 	},
 	explorer = {},
 	indent = {
@@ -36,11 +47,27 @@ map({
 })
 
 map({
+	"<leader>ss",
+	function()
+		Snacks.picker.smart()
+	end,
+	desc = "[s]mart Find Files",
+})
+
+map({
 	"<leader>,",
 	function()
 		Snacks.picker.buffers()
 	end,
 	desc = "Buffers",
+})
+
+map({
+	"<leader>sb",
+	function()
+		Snacks.picker.buffers()
+	end,
+	desc = "Search [b]uffers",
 })
 
 map({
@@ -52,6 +79,14 @@ map({
 })
 
 map({
+	"<leader>sg",
+	function()
+		Snacks.picker.grep()
+	end,
+	desc = "[g]rep",
+})
+
+map({
 	"<leader>:",
 	function()
 		Snacks.picker.command_history()
@@ -60,11 +95,27 @@ map({
 })
 
 map({
+	"<leader>sc",
+	function()
+		Snacks.picker.command_history()
+	end,
+	desc = "Search [c]ommand History",
+})
+
+map({
 	"<leader>?",
 	function()
 		Snacks.picker.help()
 	end,
 	desc = "Help",
+})
+
+map({
+	"<leader>sh",
+	function()
+		Snacks.picker.help()
+	end,
+	desc = "Search [h]elp",
 })
 
 map({

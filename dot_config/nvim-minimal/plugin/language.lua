@@ -166,7 +166,7 @@ require("mason").setup({
 		},
 	},
 })
-vim.keymap.set("n", "<leader>mm", "<cmd>Mason<cr>", {
+vim.keymap.set("n", "<leader>Mm", "<cmd>Mason<cr>", {
 	desc = "[m]ason",
 })
 
