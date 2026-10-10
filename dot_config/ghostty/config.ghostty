@@ -1,0 +1,12 @@
+# --- UI ---
+theme = dracula
+font-family = "UDEV Gothic 35NF"
+font-size = 14
+window-decoration = none
+
+# --- Integration ---
+shell-integration = direct
+
+# --- Keybinds ---
+keybind = ctrl+shift+j=unbind
+
