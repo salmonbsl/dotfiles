@@ -1,0 +1,38 @@
+[theme]
+builtin = "Dracula"
+
+[bar.main]
+start = [
+  "control-center",
+  # "launcher",
+  # "wallpaper",
+  "workspaces",
+]
+center = ["clock"]
+end = [
+  "media",
+  "tray",
+  "notifications",
+  # "clipboard",
+  "network",
+  # "bluetooth",
+  "volume",
+  "brightness",
+  "battery",
+  "session",
+]
+
+[widget.clock]
+format = "{:%a %b %d} {:%H:%M:%S}"
+
+[wallpaper]
+enabled = true
+fill_mode = "crop"
+directory = "$XDG_DATA_HOME/wallpapers"
+
+[wallpaper.automation]
+enabled = true
+interval_minutes = 1
+order = "random"
+recursive = true
+
