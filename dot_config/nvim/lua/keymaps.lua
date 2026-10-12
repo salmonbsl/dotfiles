@@ -33,7 +33,7 @@ map({ "<C-S-L>", "<C-w><S-L>" })
 map({ "<tab>", "<cmd>tabnext<cr>", desc = "Next Tab" })
 map({ "<S-tab>", "<cmd>tabprevious<cr>", desc = "Previous Tab" })
 map({ "<leader><tab>f", "<cmd>tabfirst<cr>", desc = "[f]irst Tab" })
-map({ "<leader><tab>l", "<cmd>tablast<cr>", desc = "Last Tab" })
+map({ "<leader><tab>l", "<cmd>tablast<cr>", desc = "[l]ast Tab" })
 map({ "<leader><tab>]", "<cmd>tabnext<cr>", desc = "Next Tab" })
 map({ "<leader><tab>[", "<cmd>tabprevious<cr>", desc = "Previous Tab" })
 map({ "<leader><tab>d", "<cmd>tabclose<cr>", desc = "[d]elete Tab" })
@@ -59,7 +59,7 @@ map({
 	modes = { "n", "x" },
 	noremap = true,
 	silent = true,
-	desc = "Paste from yank register",
+	desc = "[p]aste from yank register",
 })
 
 map({
@@ -68,7 +68,7 @@ map({
 	modes = { "n", "x" },
 	noremap = true,
 	silent = true,
-	desc = "Paste before from yank register",
+	desc = "[P]aste before from yank register",
 })
 
 -- Diagnostics
@@ -82,12 +82,12 @@ local diagnostic_goto = function(next, severity)
 	end
 end
 map({ "ge", vim.diagnostic.open_float, desc = "Line Diagnostics" })
-map({ "]d", diagnostic_goto(true), desc = "Next Diagnostic" })
-map({ "[d", diagnostic_goto(false), desc = "Prev Diagnostic" })
-map({ "]e", diagnostic_goto(true, "ERROR"), desc = "Next Error" })
-map({ "[e", diagnostic_goto(false, "ERROR"), desc = "Prev Error" })
-map({ "]w", diagnostic_goto(true, "WARN"), desc = "Next Warning" })
-map({ "[w", diagnostic_goto(false, "WARN"), desc = "Prev Warning" })
+map({ "]d", diagnostic_goto(true), desc = "Next [d]iagnostic" })
+map({ "[d", diagnostic_goto(false), desc = "Prev [d]iagnostic" })
+map({ "]e", diagnostic_goto(true, "ERROR"), desc = "Next [e]rror" })
+map({ "[e", diagnostic_goto(false, "ERROR"), desc = "Prev [e]rror" })
+map({ "]w", diagnostic_goto(true, "WARN"), desc = "Next [w]arning" })
+map({ "[w", diagnostic_goto(false, "WARN"), desc = "Prev [w]arning" })
 
 -- Packages
 map({
