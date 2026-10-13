@@ -5,9 +5,17 @@ vim.pack.add({
 	"https://github.com/nvim-treesitter/nvim-treesitter-context",
 	"https://github.com/folke/ts-comments.nvim",
 })
+local augroup = require("utils").augroup
+local autocmd = vim.api.nvim_create_autocmd
 
 local ts = require("nvim-treesitter")
 ts.setup()
+autocmd("FileType", {
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
+})
+
 require("nvim-treesitter-textobjects").setup()
 require("nvim-ts-autotag").setup()
 require("treesitter-context").setup()
