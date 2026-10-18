@@ -1,12 +1,15 @@
 vim.pack.add({
-	"https://github.com/vim-denops/denops.vim",
-	"https://github.com/vim-skk/skkeleton",
+	"https://github.com/kjuq/skkelua.nvim",
 })
 
-local e = vim.fn.expand
-local dicDir = e("~/.local/share/skk")
+local map = require("utils").map
+local set_hl = require("utils").set_hl
 
-vim.fn["skkeleton#config"]({
+local skkelua = require("skkelua")
+
+local dicDir = "~/.local/share/skk"
+local e = vim.fn.expand
+skkelua.config({
 	globalDictionaries = {
 		e(dicDir .. "/SKK-JISYO.L"),
 		e(dicDir .. "/SKK-JISYO.geo"),
@@ -17,14 +20,24 @@ vim.fn["skkeleton#config"]({
 		e(dicDir .. "/SKK-JISYO.law"),
 	},
 	eggLikeNewline = true,
+	indicator = {
+		alwaysShown = false,
+		fadeOutMs = 0,
+	},
 })
-vim.fn["skkeleton#register_kanatable"]("rom", {
+
+skkelua.register_kanatable("rom", {
 	["z<Space>"] = { "\u{3000}", "" },
 	[","] = { "、", "" },
 	["."] = { "。", "" },
 	["jk"] = "escape",
 })
 
-vim.keymap.set({ "i", "c" }, "<c-j>", "<Plug>(skkeleton-toggle)", {
-	desc = "Toggle SSK",
-})
+map({ "<C-j>", "<Plug>(skkelua-toggle)", modes = { "i", "c" } })
+
+set_hl("SkkeluaIndicatorEiji", { link = "DraculaSelectionInverse" })
+set_hl("SkkeluaIndicatorZenkaku", { link = "DraculaPinkInverse" })
+set_hl("SkkeluaIndicatorHira", { link = "DraculaGreenInverse" })
+set_hl("SkkeluaIndicatorKata", { link = "DraculaCyanInverse" })
+set_hl("SkkeluaIndicatorHankata", { link = "DraculaPurpleInverse" })
+set_hl("SkkeluaIndicatorAbbrev", { link = "DraculaRedInverse" })
